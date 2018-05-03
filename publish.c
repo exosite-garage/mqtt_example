@@ -6,7 +6,7 @@
 #define ADDRESS     "ssl://l4ahmqahtnokkkwgg.m2.exosite.io:443"
 #define TOKEN       "4d43DLWkUnjm8HbDUMwl2KNdNbDp1f3vYcKXgj91"
 #define CLIENTID    ""
-#define TOPIC       "$resources/temp"
+#define TOPIC       "$resource/temp"
 #define PAYLOAD     "25"
 #define QOS         1
 #define TIMEOUT     10000L
