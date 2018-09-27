@@ -93,7 +93,7 @@ First, specify the Murano token from the [activate step](#activate-example) and 
 
 ```
 #define ADDRESS             "ssl://<hostname>:<port>"
-#define TOKEN               "<YOUR_MURANO_TOKEN>"
+#define TOKEN               "<MURANO_TOKEN>"
 ```
 
 Next, compile the `pubsub` binary.

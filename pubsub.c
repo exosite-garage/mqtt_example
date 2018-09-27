@@ -5,8 +5,8 @@
 #include <time.h>
 #include "MQTTClient.h"
 
-#define ADDRESS             "ssl://f5330e5s8cho0000.m2.exosite.io:8883"
-#define TOKEN               "Ed9GHsPnc2gyZsOFoShPhxj80sRlzH9E1vZCTK9y"
+#define ADDRESS             "ssl://<hostname>:<port>"
+#define TOKEN               "<MURANO_TOKEN>"
 #define CLIENTID            ""
 #define TOPIC               "$resource/data_in"
 #define QOS                 1

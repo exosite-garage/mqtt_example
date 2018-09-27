@@ -32,10 +32,8 @@
     #define ACTIVATE_TOPIC      "$provision/clib-test-10"
 */
 
-// #define ADDRESS             "ssl://<hostname>:<port>"
-// #define ACTIVATE_TOPIC      "$provision/<id>"
-    #define ADDRESS             "ssl://f5330e5s8cho0000.m2.exosite.io:8883"
-    #define ACTIVATE_TOPIC      "$provision/clib-test-11"
+#define ADDRESS             "ssl://<hostname>:<port>"
+#define ACTIVATE_TOPIC      "$provision/<id>"
 #define CLIENTID            ""
 #define TOKEN               ""
 #define PAYLOAD             ""
