@@ -50,17 +50,60 @@ Example using hostname `mqtt://f5330e4s8cho0000.m2.exosite.io/`:
 
 **NOTE:** This example uses port `8883`. If you changed this to `443` in your Murano Product Settings, then do so in the `ADDRESS` as well.
 
+## Activate Example
+
+The example code in `activate.c` illustrates how to get a device provisioned onto your Murano Product and retrieve its secure token. The token printed in the output should be stored in non-volatile memory on your device. Once this token is retrieved/activated, it is used in all further connections to Murano.
+
+First, edit the `ADDRESS` (described above) and `ACTIVATE_TOPIC` in `activate.c`. The `<id>` is typically your device serial number.
+
+```
+#define ADDRESS             "ssl://<hostname>:<port>"
+#define ACTIVATE_TOPIC      "$provision/<id>"
+```
+
+Next, compile the `activate` binary.
+
+```
+make activate
+```
+
+Finally, execute the `activate` binary to retrieve your device's token.
+
+Example:
+
+```
+$ make activate
+gcc activate.c -Wall -g -lpaho-mqtt3cs -o activate
+$ ./activate
+connecting...
+publishing activation request...
+sleeping until murano responds with token...
+Message with token value 1 delivery confirmed
+Provisioning successful.
+Murano token: Ed9GHsPnc2gyZsOFoShPhxj80sRlzH9E1vZCTK9y
+```
+
+The last line of output, above, contains the Murano token for further connections.
+
 ## Publish Example
 
-In this configuration the paho-mqtt example is sending data to a pre-created product instance on Exosite Murano. To change it to your own instance open publish.c and change the constants to point to your product id and a valid device token:
+The example code in `publish.c` illustrates how to publish arbitrary data to your Murano Product's `data_in` resource.
+
+First, specify the Murano token from the [activate step](#activate-example) and the same `ADDRESS`.
 
 ```
-#define ADDRESS     "ssl://<YOUR_PRODUCT_ID_HERE>.m2.exosite.io:443"
-#define TOKEN       "<YOUR_DEVICE_TOKEN_HERE>"
+#define ADDRESS             "ssl://<hostname>:<port>"
+#define TOKEN               "<YOUR_MURANO_TOKEN>"
 ```
 
+Next, compile the `publish` binary.
 
 ```
-make
+make publish
+```
+
+Finally, execute the `publish` binary.
+
+```
 ./publish
 ```
