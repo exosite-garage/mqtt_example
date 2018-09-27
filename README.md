@@ -32,7 +32,7 @@ Once the paho-mqtt library is installed you can go ahead and compile this exampl
 
 ## Configuration
 
-In order to use the `activate` and `publish` examples, you'll first need to set some `#defines` in the respective `.c` files.
+In order to use the `activate` and `pubsub` examples, you'll first need to set some `#defines` in the respective `.c` files.
 
 ### Murano Hostname
 
@@ -40,7 +40,7 @@ Open the Murano Product web UI and click the link that the image (below) is poin
 
 ![Finding the Murano hostname](find-product-hostname.png)
 
-In both `activate` and `publish` examples, you will trim some characters from this URL to define the MQTT secure host to Murano.
+In both `activate` and `` examples, you will trim some characters from this URL to define the MQTT secure host to Murano.
 
 Example using hostname `mqtt://f5330e4s8cho0000.m2.exosite.io/`:
 
@@ -85,9 +85,9 @@ Murano token: Ed9GHsPnc2gyZsOFoShPhxj80sRlzH9E1vZCTK9y
 
 The last line of output, above, contains the Murano token for further connections.
 
-## Publish Example
+## Pubsub Example
 
-The example code in `publish.c` illustrates how to publish arbitrary data to your Murano Product's `data_in` resource.
+The example code in `pubsub.c` illustrates how to publish arbitrary data to your Murano Product's `data_in` resource while simultaneously monitoring all other Murano resources for new data.
 
 First, specify the Murano token from the [activate step](#activate-example) and the same `ADDRESS`.
 
@@ -96,14 +96,35 @@ First, specify the Murano token from the [activate step](#activate-example) and 
 #define TOKEN               "<YOUR_MURANO_TOKEN>"
 ```
 
-Next, compile the `publish` binary.
+Next, compile the `pubsub` binary.
 
 ```
-make publish
+make pubsub
 ```
 
-Finally, execute the `publish` binary.
+Finally, execute the `pubsub` binary.
+
+In the example, below, randomized JSON objects are published to `data_in` and a message is received from the Murano Product resource `data_out` after a few seconds.
 
 ```
-./publish
+$ make pubsub
+gcc pubsub.c -Wall -g -lpaho-mqtt3cs -o pubsub
+$ ./pubsub
+Message with delivery token 1 delivered: {"001": 8}
+Message with delivery token 2 delivered: {"001": 87}
+Message with delivery token 3 delivered: {"001": 10}
+Message with delivery token 4 delivered: {"001": 21}
+Message with delivery token 5 delivered: {"001": 27}
+Message with delivery token 6 delivered: {"001": 49}
+Message with delivery token 7 delivered: {"001": 10}
+Message with delivery token 8 delivered: {"001": 10}
+Message with delivery token 9 delivered: {"001": 19}
+Message arrived
+     topic: $resource/data_out/1538080072997000
+   message: reboot
+Message with delivery token 10 delivered: {"001": 47}
+Message with delivery token 11 delivered: {"001": 48}
+Message with delivery token 12 delivered: {"001": 60}
+Message with delivery token 13 delivered: {"001": 97}
+^C
 ```
