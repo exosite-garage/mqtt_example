@@ -40,7 +40,7 @@ Open the Murano Product web UI and click the link that the image (below) is poin
 
 ![Finding the Murano hostname](find-product-hostname.png)
 
-In both `activate` and `` examples, you will trim some characters from this URL to define the MQTT secure host to Murano.
+In both `activate` and `pubsub` examples, you will trim some characters from this URL to define the MQTT secure host to Murano.
 
 Example using hostname `mqtt://f5330e4s8cho0000.m2.exosite.io/`:
 
