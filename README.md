@@ -2,7 +2,7 @@
 
 This example shows how to create a basic connection to the Exosite Murano Platform using MQTT and the open source paho-mqtt library.
 
-Note: A free account and product at Murano is required: http://info.exosite.com/platform-sign-up
+_Note:_ A Murano account and product is required: http://info.exosite.com/platform-sign-up
 
 License is BSD, Copyright 2018, Exosite LLC (see LICENSE file)
 
